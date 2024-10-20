@@ -21,6 +21,11 @@ Session(app)
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///finance.db")
 
+# Add this block at the end of the file
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Get the PORT from environment variable, default to 5000
+    app.run(host="0.0.0.0", port=port)  # Bind to all IPs (0.0.0.0) and the given port
+
 @app.after_request
 def after_request(response):
     """Ensure responses aren't cached"""
